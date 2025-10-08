@@ -5,7 +5,7 @@ from transformers import pipeline
 
 st.set_page_config(page_title="Распознавание текста")
 
-st.title("Распознавание текста с изображения")
+st.title("Распознавание англоязычного текста с изображения")
 st.write("Загрузите изображение")
 
 @st.cache_resource
