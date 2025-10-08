@@ -39,7 +39,7 @@ if uploaded_file is not None:
                 generated_text = result[0]['generated_text']
             
             st.success("Текст распознан!")
-            st.text_area("Результат:", generated_text, height=200)
+            st.write(f"Результат: {generated_text}")
             
         except Exception as e:
             st.error(f"Ошибка: {str(e)}")
