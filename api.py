@@ -66,15 +66,10 @@ async def root():
         "app": "OCR API",
         "version": "1.0",
         "description": "API для распознавания текста с изображений",
-        "endpoints": {
-            "health": "/health",
-            "ocr": "/ocr",
-            "docs": "/docs"
-        },
         "model_loaded": model_loaded
     }
 
-@app.post("/ocr")
+@app.post("/text")
 async def recognize_text(
     file: UploadFile = File(..., description="Изображение для распознавания (JPG, PNG)")
 ):
@@ -125,7 +120,7 @@ async def recognize_text(
             detail=f"Ошибка обработки: {str(e)}"
         )
 
-@app.post("/ocr/url")
+@app.post("/text/url")
 async def recognize_from_url(image_url: str):
     import requests
     
@@ -166,7 +161,6 @@ async def recognize_from_url(image_url: str):
         )
 
 if __name__ == "__main__":
-    # Запуск сервера
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
