@@ -3,6 +3,8 @@ import torch
 from PIL import Image
 from transformers import pipeline
 
+from api import load_model
+
 st.set_page_config(page_title="Распознавание текста")
 
 st.title("Распознавание англоязычного текста с изображения")
@@ -34,7 +36,7 @@ if uploaded_file is not None:
     if st.button("Распознать текст"):
         try:
             with st.spinner("Распознавание текста..."):
-                pipe = load_ocr_pipeline()
+                pipe = load_model()
                 result = pipe(image)
                 generated_text = result[0]['generated_text']
             
